@@ -1,0 +1,58 @@
+Rareness of ores:
+Legendary - 1 Deposit per 64x64 chunks
+Extremely Rare - 1 Deposit per 48x48 chunks
+Very Rare - 1 Deposit per 32x32 chunks
+Rare - 1 Deposit per 24x24 chunks
+Uncommon - 1 Deposit per 16x16 chunks
+Common - 1 Deposit per 12x12 chunks
+Very Common - 1 Deposit per 8x8 chunks
+Abundant - 1 Deposit per 4x4 chunks
+Very Abundant - 1 Deposit per 3x3 chunks
+Everywhere - 1 Deposit per 2x2 chunks
+
+Size of ore deposits:
+Tiny - 1-2 blocks
+Extra Small - 2-4 blocks
+Small - 3-10 blocks
+Smallish - 6-30 blocks
+Medium - 20-52 blocks
+Largish - 30-70 blocks
+Large - 52-123 blocks
+Extra Large - 72-194 blocks
+
+Stack size:
+0<=x<100g/cm³ - 64
+100g<=x<500g/cm³ - 48
+500g<=x<2500g/cm³ - 32
+2500g<=x<10,000g/cm³ - 16
+10,000g/cm³<=x - 8
+
+
+₁₂₃₄₅₆₇₈₉
+(N) = native
+
+Name                    | Rareness       | Size of deposits | Formula                  | Y Co-ords | Texture made | Specific gravity | Mohs hardness | Magnetism 
+Examplite               | Extremely Rare | Extra Large      | E₂X                      | 37 to 37  | Excuse?      | 37               | 3.7           | Exclusive
+
+Bertrandite             | Common         | Medium           | Be₄Si₂O₇(OH)₂            |           | Yes          | 2.60             | 6.0-7.0       | Non-magnetic
+Bismuth (N)             | Common         | Largish          | Bi                       |           | Yes          | 9.75             | 2.25          | Non-magnetic
+Chalcopyrite            | Abundant       | Large            | CuFeS₂                   |           | Yes          | 4.2              | 3.5           | Magnetic after heating
+Cobaltite               | Rare           | Smallish         | CoAsS                    |           | Yes          | 6.33             | 5.5           | Magnetic after heating
+Cooperite               | Rare           | Extra Small      | (Pt,Pd,Ni)S              |           | No           | 9.50             | 4.0-5.0       | ? (after heating?)
+Copper (N)              | Very Common    | Largish          | Cu                       |           | Yes          | 8.95             | 3.0           | Non-magnetic
+Hexatestibiopanickelite | Very Rare      | Large            | (Ni,Pd)(Te,Sb)           |           | No           | 8.94             | 2.0           | ? (after heating?)
+Kernite                 | Rare           | Medium?          | Na₂B₄O₆(OH)₂·3(H₂O)      |           | No           | 1.91             | 2.5-3.0       | Non-magnetic
+Löllingite              | Uncommon       | Extra Small      | FeAs₂                    |           | No           | 7.1-7.5          | 5.0-6.0       | Magnetic after heating
+Malachite               | Common         | Medium           | Cu₂CO₃(OH)₂              |           | Yes          | 3.8              | 3.5-4.0       | Non-magnetic
+Playfairite             | Very Rare      | Smallish         | Pb₁₆Sb₁₈S₄₃              |           | No           | 5.8              | 3.5-4.0       | Non-magnetic
+Pyrite                  | Common         | Largish          | FeS₂                     |           | No           | 5.01             | 6.5           | Magnetic after heating
+Silver (N)              | Uncommon       | Largish          | Ag                       |           | Yes          | 10.50            | 2.5           | Non-magnetic
+Sphalerite              | Common         | Medium           | (Zn,Fe)S                 |           | Yes          | 4.05             | 3.5-4.0       | ? (after heating?)
+Uraninite               | Common         | Small            | UO₂ - oxides of Pb & Th  |           | No           | 8.72             | 5.0-6.0       | Non-magnetic
+Wilhelmramsayite        | Extremely Rare | Medium?          | Cu₃FeS₃·2(H2O)           |           | No           | 2.75             | 2.5           | Weakly ferromagnetic
+
+
+Association of ores:
+Chalcopyrite, cobaltite, sphalerite, magnetite, skutterudite, allanite, zoisite, scapolite, titanite and calcite often occur in association with each other.
+Hexatestibiopanickelite occurs in association with Testibiopalladite.
+Löllingite occurs in mesothermal ore deposits associated with skutterudite, native bismuth, nickeline, nickel-skutterudite, siderite and calcite.

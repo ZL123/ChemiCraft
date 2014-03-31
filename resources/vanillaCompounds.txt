@@ -1,0 +1,5 @@
+When 1.8 comes out, Lithium can be produced from Granite.
+
+Emerald = Be3Al2(SiO3)6
+Coal = Primarily Carbon, Secondarily Hydrogen, Sulphur, Oxygen, Nitrogen
+Diamond = Carbon
