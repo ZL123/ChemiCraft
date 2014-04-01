@@ -8,7 +8,6 @@ public class Reference {
 	
 	public static final float DEF_ORE_HARDNESS = 3.0F;
 	public static final float DEF_ORE_RESIST = 5.0F;
-	public static final short MAXIMUM_METATILE_IDS = Short.MAX_VALUE - 1;
-	
+	public static final short MAXIMUM_METATILE_IDS = Short.MAX_VALUE - 1;	
 	
 }

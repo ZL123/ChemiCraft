@@ -1,18 +1,23 @@
 package chemicraft.block;
 
 import net.minecraft.block.Block;
-import net.minecraft.util.RegistryNamespaced;
-import chemicraft.config.ConfigSettings;
 import chemicraft.lib.Reference;
-import cpw.mods.fml.common.registry.GameData;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CCBlocks {
 	
-	public static final RegistryNamespaced blockRegistry = GameData.blockRegistry;
+	public static Block CCOre;
 	
-	public static void registerBlocks() {
-		//addObject(numericalID, stringID, block)
-		blockRegistry.addObject(ConfigSettings.oreID, "chemicraft_ore", (new BlockOreCC(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST)).setStepSound(Block.soundTypePiston).setBlockName("chemicraft_ore").setBlockTextureName("ore"));
+	public static void registerBlock(Block block) {
+		GameRegistry.registerBlock(block, block.getUnlocalizedName().substring(5));
+	}
+	
+	public static void blockRegister() {
+		
+		CCOre = new BlockOreCC(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST);
+		
+		
+		registerBlock(CCOre);
 		
 	}
 	

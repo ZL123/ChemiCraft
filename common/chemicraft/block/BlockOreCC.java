@@ -3,6 +3,7 @@ package chemicraft.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.IIcon;
+import chemicraft.lib.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -12,6 +13,10 @@ public class BlockOreCC extends Block {
 		super(Material.rock);
 		this.setHardness(hardness); //Default hardness is DEF_ORE_HARDNESS in Reference class
 		this.setResistance(resist); //Default resistance is DEF_ORE_RESIST in Reference class
+		this.setBlockName("CCOre");
+		this.setStepSound(Block.soundTypePiston);
+		this.setBlockTextureName(Reference.MOD_ID + ":ore");
+		
 	}
 	
 	@Override
