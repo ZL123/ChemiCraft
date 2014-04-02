@@ -45,11 +45,11 @@ Kernite                 | Rare           | Medium?          | Na₂B₄O₆(OH)�
 Löllingite              | Uncommon       | Extra Small      | FeAs₂                    |           | Yes          | 7.1-7.5          | 5.0-6.0       | Magnetic after heating
 Malachite               | Common         | Medium           | Cu₂(CO₃)(OH)₂            |           | Yes          | 3.8              | 3.5-4.0       | Non-magnetic
 Playfairite             | Very Rare      | Smallish         | Pb₁₆Sb₁₈S₄₃              |           | Yes          | 5.8              | 3.5-4.0       | Non-magnetic
-Pyrite                  | Common         | Largish          | FeS₂                     |           | No           | 5.01             | 6.5           | Magnetic after heating
+Pyrite                  | Common         | Largish          | FeS₂                     |           | Yes          | 5.01             | 6.5           | Magnetic after heating
 Silver (N)              | Uncommon       | Largish          | Ag                       |           | Yes          | 10.50            | 2.5           | Non-magnetic
 Sphalerite              | Common         | Medium           | (Zn,Fe)S                 |           | Yes          | 4.05             | 3.5-4.0       | ? (after heating?)
 Uraninite               | Common         | Small            | UO₂ - oxides of Pb & Th  |           | Yes          | 8.72             | 5.0-6.0       | Non-magnetic
-Wilhelmramsayite        | Extremely Rare | Medium?          | Cu₃FeS₃•2(H₂O)           |           | No           | 2.75             | 2.5           | Weakly ferromagnetic
+Wilhelmramsayite        | Extremely Rare | Medium?          | Cu₃FeS₃•2(H₂O)           |           | Yes          | 2.75             | 2.5           | Weakly ferromagnetic
 
 
 Association of ores:

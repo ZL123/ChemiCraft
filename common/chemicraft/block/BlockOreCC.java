@@ -33,6 +33,10 @@ public class BlockOreCC extends Block {
 	 */
 	protected boolean isAffectedByFortune;
 	
+	public static final String[] oreNames = {"bertrandite", "bismuthNative", "chalcopyrite", "cobaltite", "cooperite", "copperNative",
+											 "hexatestibiopanickelite", "kernite", "löllingite", "malachite", "playfairite", "pyrite",
+											 "silverNative", "sphalerite", "uraninite", "wilhelmramsayite"};
+	
 	public BlockOreCC() {
 		this(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST, Reference.DEF_ORE_TYPE, Reference.DEF_ORE_DROP_AMOUNT, Reference.DEF_ORE_FORTUNE);
 	}
