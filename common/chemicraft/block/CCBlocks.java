@@ -1,7 +1,6 @@
 package chemicraft.block;
 
 import net.minecraft.block.Block;
-import chemicraft.lib.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CCBlocks {
@@ -14,7 +13,7 @@ public class CCBlocks {
 	
 	public static void blockRegister() {
 		
-		CCOre = new BlockOreCC(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST);
+		CCOre = new BlockOreCC();
 		
 		
 		registerBlock(CCOre);
