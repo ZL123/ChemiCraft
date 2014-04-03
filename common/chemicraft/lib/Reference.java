@@ -10,7 +10,6 @@ public class Reference {
 	public static final float DEF_ORE_RESIST = 5.0F;
 	public static final short DEF_ORE_TYPE = 0;
 	public static final int[] DEF_ORE_DROP_AMOUNT = {1,1};
-	public static final boolean DEF_ORE_FORTUNE = true;
-	public static final short MAXIMUM_METATILE_IDS = Short.MAX_VALUE - 1;	
+	public static final boolean DEF_ORE_FORTUNE = true; //I was told making constants for everything was good.
 	
 }

@@ -38,7 +38,8 @@ public class BlockOreCC extends Block {
 											 "silverNative", "sphalerite", "uraninite", "wilhelmramsayite"};
 	
 	public BlockOreCC() {
-		this(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST, Reference.DEF_ORE_TYPE, Reference.DEF_ORE_DROP_AMOUNT, Reference.DEF_ORE_FORTUNE);
+		this(Reference.DEF_ORE_HARDNESS, Reference.DEF_ORE_RESIST, Reference.DEF_ORE_TYPE,
+			 Reference.DEF_ORE_DROP_AMOUNT, Reference.DEF_ORE_FORTUNE);
 	}
 	
 	public BlockOreCC(float hardness, float resist, short type, int[] dropAmount, boolean affectedByFortune) {
