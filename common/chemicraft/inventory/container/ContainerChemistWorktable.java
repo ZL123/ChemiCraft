@@ -32,9 +32,9 @@ public class ContainerChemistWorktable extends Container {
         int l;
         int i1;
 
-        for (l = 0; l < 3; ++l)
+        for (l = 0; l < 4; ++l)
         {
-            for (i1 = 0; i1 < 3; ++i1)
+            for (i1 = 0; i1 < 4; ++i1)
             {
                 this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
             }
@@ -87,6 +87,66 @@ public class ContainerChemistWorktable extends Container {
         this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
 	
-	
-	
+	/**
+     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
+     */
+	@Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+    {
+        ItemStack stack = null;
+        Slot slot = (Slot)this.inventorySlots.get(par2);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack stack1 = slot.getStack();
+            stack = stack1.copy();
+
+            if (par2 == 0)
+            {
+                if (!this.mergeItemStack(stack1, 10, 46, true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(stack1, stack);
+            }
+            else if (par2 >= 10 && par2 < 37)
+            {
+                if (!this.mergeItemStack(stack1, 37, 46, false))
+                {
+                    return null;
+                }
+            }
+            else if (par2 >= 37 && par2 < 46)
+            {
+                if (!this.mergeItemStack(stack1, 10, 37, false))
+                {
+                    return null;
+                }
+            }
+            else if (!this.mergeItemStack(stack1, 10, 46, false))
+            {
+                return null;
+            }
+
+            if (stack1.stackSize == 0)
+            {
+                slot.putStack((ItemStack)null);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (stack1.stackSize == stack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(par1EntityPlayer, stack1);
+        }
+
+        return stack;
+    }
+    
 }
