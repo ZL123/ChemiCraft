@@ -1,2 +1,6 @@
+itemGroup.chemiCraft_blocks=ChemiCraft Blocks
+
 tile.CCOre.name=This is broken! Y U DO DIS
-itemGroup.chemiCraft=ChemiCraft
+tile.chemistWorktable.name=Chemist's Worktable
+
+container.chemist_worktable=Chemist's Worktable
