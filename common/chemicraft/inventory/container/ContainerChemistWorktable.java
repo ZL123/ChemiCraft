@@ -15,42 +15,36 @@ import chemicraft.block.CCBlocks;
 
 public class ContainerChemistWorktable extends Container {
 	
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
     protected World worldObj;
     protected int posX;
     protected int posY;
     protected int posZ;
 	
-    public ContainerChemistWorktable(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
-    {
+    public ContainerChemistWorktable(InventoryPlayer par1InventoryPlayer, World par2World, int x, int y, int z) {
         this.worldObj = par2World;
-        this.posX = par3;
-        this.posY = par4;
-        this.posZ = par5;
+        this.posX = x;
+        this.posY = y;
+        this.posZ = z;
         this.addSlotToContainer(new SlotCrafting(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
-        int l;
-        int i1;
-
-        for (l = 0; l < 4; ++l)
-        {
-            for (i1 = 0; i1 < 4; ++i1)
-            {
-                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
+        int row;
+        int col;
+//																   slotIndex        
+        for (row = 0; row < 3; ++row) {//										  xDisplayPosition
+            for (col = 0; col < 3; ++col) {//													 yDisplayPosition
+                this.addSlotToContainer(new Slot(this.craftMatrix, col + row * 3, 18 + col * 18, 17 + row * 18));
             }
         }
 
-        for (l = 0; l < 3; ++l)
-        {
-            for (i1 = 0; i1 < 9; ++i1)
-            {
-                this.addSlotToContainer(new Slot(par1InventoryPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
+        for (row = 0; row < 3; ++row) {
+            for (col = 0; col < 9; ++col) {
+                this.addSlotToContainer(new Slot(par1InventoryPlayer, col + row * 9 + 9, 8 + col * 18, 84 + row * 18));
             }
         }
-
-        for (l = 0; l < 9; ++l)
-        {
-            this.addSlotToContainer(new Slot(par1InventoryPlayer, l, 8 + l * 18, 142));
+        
+        for (row = 0; row < 9; ++row) {
+            this.addSlotToContainer(new Slot(par1InventoryPlayer, row, 8 + row * 18, 142));
         }
 
         this.onCraftMatrixChanged(this.craftMatrix);
@@ -69,10 +63,10 @@ public class ContainerChemistWorktable extends Container {
         
         if (!this.worldObj.isRemote) {
             for (int i = 0; i < 9; ++i) {
-                ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
+                ItemStack stack = this.craftMatrix.getStackInSlotOnClosing(i);
                 
-                if (itemstack != null) {
-                    par1EntityPlayer.dropPlayerItemWithRandomChoice(itemstack, false);
+                if (stack != null) {
+                    par1EntityPlayer.dropPlayerItemWithRandomChoice(stack, false);
                 }
             }
         }
@@ -93,53 +87,41 @@ public class ContainerChemistWorktable extends Container {
 	@Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
     {
-        ItemStack stack = null;
+		ItemStack stack = null;
         Slot slot = (Slot)this.inventorySlots.get(par2);
 
-        if (slot != null && slot.getHasStack())
-        {
+        if (slot != null && slot.getHasStack()) {
             ItemStack stack1 = slot.getStack();
             stack = stack1.copy();
 
-            if (par2 == 0)
-            {
-                if (!this.mergeItemStack(stack1, 10, 46, true))
-                {
+            if (par2 == 0) {
+                if (!this.mergeItemStack(stack1, 10, 46, true)) {
                     return null;
                 }
-
                 slot.onSlotChange(stack1, stack);
             }
-            else if (par2 >= 10 && par2 < 37)
-            {
-                if (!this.mergeItemStack(stack1, 37, 46, false))
-                {
+            else if (par2 >= 10 && par2 < 37) {
+                if (!this.mergeItemStack(stack1, 37, 46, false)) {
                     return null;
                 }
             }
-            else if (par2 >= 37 && par2 < 46)
-            {
-                if (!this.mergeItemStack(stack1, 10, 37, false))
-                {
+            else if (par2 >= 37 && par2 < 46) {
+                if (!this.mergeItemStack(stack1, 10, 37, false)) {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(stack1, 10, 46, false))
-            {
+            else if (!this.mergeItemStack(stack1, 10, 46, false)) {
                 return null;
             }
 
-            if (stack1.stackSize == 0)
-            {
+            if (stack1.stackSize == 0) {
                 slot.putStack((ItemStack)null);
             }
-            else
-            {
+            else {
                 slot.onSlotChanged();
             }
 
-            if (stack1.stackSize == stack.stackSize)
-            {
+            if (stack1.stackSize == stack.stackSize) {
                 return null;
             }
 

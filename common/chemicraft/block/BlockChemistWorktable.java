@@ -1,17 +1,20 @@
 package chemicraft.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import chemicraft.ChemiCraft;
+import chemicraft.inventory.tileentity.TileEntityChemistWorktable;
 import chemicraft.lib.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockChemistWorktable extends Block {
+public class BlockChemistWorktable extends BlockContainer {
 	
 	@SideOnly(Side.CLIENT)
     protected IIcon verticalTexture;
@@ -50,5 +53,10 @@ public class BlockChemistWorktable extends Block {
         player.openGui(ChemiCraft.instance, 1, world, x, y, z);
         return true;
     }
+
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new TileEntityChemistWorktable();
+	}
 
 }

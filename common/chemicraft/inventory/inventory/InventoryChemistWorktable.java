@@ -61,7 +61,7 @@ public class InventoryChemistWorktable implements IInventory
      */
     public String getInventoryName()
     {
-        return "container.crafting";
+        return "container.chemistWorktable";
     }
 
     /**
