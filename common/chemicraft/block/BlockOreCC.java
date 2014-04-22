@@ -3,7 +3,7 @@ package chemicraft.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.IIcon;
-import chemicraft.lib.CCLog;
+import chemicraft.api.lib.CCLog;
 import chemicraft.lib.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -1,4 +1,4 @@
-package chemicraft.lib;
+package chemicraft.api.lib;
 
 import java.io.File;
 import java.io.PrintStream;

@@ -1,4 +1,4 @@
-package chemicraft.lib;
+package chemicraft.api.lib;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -17,6 +17,15 @@ public class Utility {
 	
 	public static byte getOppositeSide(int aSide) {
 		return (byte)ForgeDirection.getOrientation(aSide).getOpposite().ordinal();
+	}
+	
+	public static int findNextEmptySlot(Object[] array) {
+		for(int i = 0; i < array.length; i++) {
+			if (array[i] == null) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	
 }

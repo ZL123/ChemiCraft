@@ -1,1 +1,3 @@
 Greg says I take MetaTileEntities from [8192 - 8703]. Hooray! 511 IDs to play with.
+
+Noteworthy: Czochralski process.

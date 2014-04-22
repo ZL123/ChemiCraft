@@ -5,6 +5,7 @@ import chemicraft.block.CCBlocks;
 import chemicraft.inventory.CreativeTabCCBlocks;
 import chemicraft.inventory.gui.GuiHandler;
 import chemicraft.inventory.tileentity.TileEntityChemistWorktable;
+import chemicraft.lib.CCRecipes;
 import chemicraft.lib.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -33,6 +34,8 @@ public class ChemiCraft {
     	
     	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	GameRegistry.registerTileEntity(TileEntityChemistWorktable.class, "ChemistWorktable");
+    	CCRecipes.recipes();
+    	
     	
     }
     

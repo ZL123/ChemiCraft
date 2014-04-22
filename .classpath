@@ -7,7 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="common"/>
-	<classpathentry kind="src" path="dependencies"/>
+	<classpathentry kind="src" path="api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Forge"/>
 	<classpathentry kind="lib" path="C:/Users/USER/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.2-10.12.0.1047/forgeSrc-1.7.2-10.12.0.1047.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
