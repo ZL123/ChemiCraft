@@ -53,7 +53,7 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 		if(interests[5] != 0) {
 			negZ = convertAndSeparate(interests, 5);
 			
-			if(intersts[5] == 2) {
+			if(interests[5] == 2) {
 				addToProducersList(negZ);
 			}
 		}
