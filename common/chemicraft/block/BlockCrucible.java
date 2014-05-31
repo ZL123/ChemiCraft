@@ -1,12 +1,17 @@
 package chemicraft.block;
 
+import java.util.List;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import chemicraft.inventory.tileentity.TileEntitySmallCrucible;
 import chemicraft.lib.Reference;
@@ -14,6 +19,10 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCrucible extends BlockContainer {
+	
+	@SideOnly(Side.CLIENT)
+	protected IIcon iconClay, iconGraphite, iconAlumina, iconMagnesia, iconZirconia,
+			iconMolybdenum, iconTungsten;
 	
 	public static final int clayMetaNumber = 0;
 	public static final int graphiteMetaNumber = 1;
@@ -36,9 +45,30 @@ public class BlockCrucible extends BlockContainer {
 	
 	@SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-        this.blockIcon = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_" + crucibleMaterials[crucibleIndex] + "_small");
-    }
+		iconClay = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_clay_small_overlay");
+        iconGraphite = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_graphite_small_overlay");
+        iconAlumina = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_alumina_small_overlay");
+        iconMagnesia = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_magnesia_small_overlay");
+        iconZirconia = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_zirconia_small_overlay");
+        iconMolybdenum = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_molybdenum_small_overlay");
+        iconTungsten = register.registerIcon(Reference.MOD_ID + ":" + getTextureName() + "_tungsten_small_overlay");
+	}
 	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public IIcon getIcon(int side, int meta) {
+		switch(meta) {
+			case clayMetaNumber: return iconClay;
+			case graphiteMetaNumber: return iconGraphite;
+			case aluminaMetaNumber: return iconAlumina;
+			case magnesiaMetaNumber: return iconMagnesia;
+			case zirconiaMetaNumber: return iconZirconia;
+			case tungstenMetaNumber: return iconTungsten;
+			default: return iconAlumina;
+		}
+	}
+	
+	@Override
 	public void setBlockBoundsForItemRender() {
         float f = 0.375F;   //   3/8
         float f1 = 0.1875F; //  3/16
@@ -105,6 +135,22 @@ public class BlockCrucible extends BlockContainer {
 	
 	public void setCrucibleIndex(int index) {
 		crucibleIndex = index;
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
+	{
+		for(int i = 0; i < crucibleMaterials.length; i++)
+		{
+			list.add(new ItemStack(item, 1, i));
+		}
 	}
 
 }
