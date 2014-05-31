@@ -7,6 +7,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class Utility {
 	
+	public static boolean debugMode = false;
+	
 	public static boolean isAirBlock(World aWorld, int aX, int aY, int aZ) {
 		Block tID = aWorld.getBlock(aX, aY, aZ);
 		if (tID != Blocks.air) {

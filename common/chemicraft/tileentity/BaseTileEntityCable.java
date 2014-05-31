@@ -1,5 +1,10 @@
 package chemicraft.tileentity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import chemicraft.energy.ICable;
 import chemicraft.energy.IEnergyConsumer;
@@ -7,8 +12,8 @@ import chemicraft.energy.IEnergyProducer;
 
 public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 	
-	public float currentPower;
-	public int[][] knownProducers;
+	@SuppressWarnings("rawtypes")
+	public List knownProducers = new ArrayList<Integer>();
 	
 	@Override
 	public void spreadPowerProducers() {
@@ -17,15 +22,29 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 		
 		if(interests[0] != 0) {
 			posX = convertAndSeparate(interests, 0);
-			
-			if(interests[0] == 2) {
+			if(interests[0] == 1) {
+				for(int i = 0; i < knownProducers.size(); i += 3) {
+					int[] pCoords = {(int)knownProducers.get(i), (int)knownProducers.get(i+1),
+							(int)knownProducers.get(i+2)};
+					if (!producerExists(posX, pCoords)) {
+						notifyAdjacentCable(posX, pCoords);
+					}
+				}
+			} else if(interests[0] == 2) {
 				addToProducersList(posX);
 			}
 		}
 		if(interests[1] != 0) {
 			posY = convertAndSeparate(interests, 1);
-			
-			if(interests[1] == 2) {
+			if(interests[1] == 1) {
+				for(int i = 0; i < knownProducers.size(); i += 3) {
+					int[] pCoords = {(int)knownProducers.get(i), (int)knownProducers.get(i+1),
+							(int)knownProducers.get(i+2)};
+					if (!producerExists(posY, pCoords)) {
+						notifyAdjacentCable(posY, pCoords);
+					}
+				}
+			} else if(interests[1] == 2) {
 				addToProducersList(posY);
 			}
 		}
@@ -57,8 +76,6 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 				addToProducersList(negZ);
 			}
 		}
-		
-		
 		
 	}
 	
@@ -147,21 +164,79 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 		
 	}
 	
-	
 	@Override
-	public void notifyAdjacentCables(int[] producerCoords) {
-		
+	public boolean notifyAdjacentCable(int[] cableCoords, int[] producerCoords) {
+		if(worldObj.getTileEntity(cableCoords[0], cableCoords[1], cableCoords[2])
+				instanceof BaseTileEntityCable) {
+			BaseTileEntityCable adjCable = (BaseTileEntityCable) new TileEntity();
+			adjCable.addToProducersList(cableCoords);
+			
+			return true;
+		}
+		return false;
 	}
 	
+	@Override
+	public boolean producerExists(int[] cableCoords, int[] producerCoords) {
+		if(worldObj.getTileEntity(cableCoords[0], cableCoords[1], cableCoords[2])
+				instanceof BaseTileEntityCable) {
+			BaseTileEntityCable adjCable = (BaseTileEntityCable) new TileEntity();
+			if (adjCable.findCoordsInProducerList(producerCoords) != -1) return true;
+		}
+		return false;
+	}
+	
+	@SuppressWarnings("unchecked")
 	/**
 	 * Adds the producer at the given co-ordinates to the list of connected CP producers.
 	 * @param producerCoords Co-ordinates of producer
 	 */
 	public void addToProducersList(int[] producerCoords) {
-		int kpLength = knownProducers.length;
-		knownProducers[kpLength][0] = producerCoords[0];
-		knownProducers[kpLength][1] = producerCoords[1];
-		knownProducers[kpLength][2] = producerCoords[2];		
+		knownProducers.add(producerCoords[0]);
+		knownProducers.add(producerCoords[1]);
+		knownProducers.add(producerCoords[2]);
+		
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        int[] producers = compound.getIntArray("producers");
+        knownProducers.clear();
+        Collections.addAll(knownProducers, producers);
+    }
+	
+	@Override
+	public void writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
+		int[] producers = new int[knownProducers.size()];
+		for(int i = 0; i < knownProducers.size(); i++) producers[i] = (int)knownProducers.get(i);
+		compound.setIntArray("producers", producers);
+    }
+	
+	@Override
+	public int findCoordsInProducerList(int[] location) {
+		for(int i = 0; i < knownProducers.size(); i += 3) {
+			if(location[0] == (int)knownProducers.get(i)) {
+				if(location[1] == (int)knownProducers.get(i+1)) {
+					if(location[2] == (int)knownProducers.get(i+2)) {
+						return i;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+	
+	@Override
+	public boolean removePOIs(int[] location) {
+		int i = findCoordsInProducerList(location);
+		if(knownProducers.size() >= i+5) {
+			System.arraycopy(knownProducers, i+3, knownProducers, i,
+					knownProducers.size() - (i+3));
+		}
+		return true;
 		
 	}
 	

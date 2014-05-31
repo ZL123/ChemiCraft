@@ -22,9 +22,31 @@ public interface ICable {
 	
 	/**
 	 * Uses intel from above methods to tell cables about producers.
+	 * 
+	 * @param cableCoords Co-ordinates of the adjacent cable
+	 * @param producerCoords Co-ordinates of the producer
+	 * @return <b>true</b> if successful
 	 */
-	public void notifyAdjacentCables(int[] producerCoords);
+	public boolean notifyAdjacentCable(int[] cableCoords, int[] producerCoords);
 	
-	public int[] removePOIs();
+	/**
+	 * Removes cables and producers from the list of known producers.
+	 * 
+	 * @param location The co-ordinates of the tile
+	 * @return <b>true</b> if successful
+	 */
+	public boolean removePOIs(int[] location);
+	
+	/**
+	 * Checks if a cable already has data about a producer.
+	 */
+	public boolean producerExists(int[] cableCoords, int[] producerCoords);
+	
+	/**
+	 * Checks the producer list in a cable and sees if it has a set of co-ordinates.
+	 * @param location Co-ordinates
+	 * @return If successful, the index of the x co-ordinate; otherwise -1.
+	 */
+	public int findCoordsInProducerList(int[] location);
 	
 }
