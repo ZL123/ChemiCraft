@@ -1,4 +1,4 @@
-package chemicraft.inventory.tileentity;
+package chemicraft.tileentity;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -1,6 +1,32 @@
 itemGroup.chemiCraft_blocks=ChemiCraft Blocks
+itemGroup.chemiCraft_items=ChemiCraft Items
 
 tile.CCOre.name=This is broken! Y U DO DIS
-tile.chemistWorktable.name=Chemist's Worktable
+tile.blockChemistWorktable.name=Chemist's Worktable
+
+tile.blockTubingBronze.name=Bronze Tubing
+tile.blockTubingCopper.name=Copper Tubing
+tile.blockTubingGold.name=Gold Tubing
+tile.blockTubingSilver.name=Silver Tubing
+tile.blockTubingAluminium.name=Aluminum Tubing
+
+item.CCIngotBronze.name=Bronze Ingot
+item.CCIngotCopper.name=Copper Ingot
+item.CCIngotSilver.name=Silver Ingot
+item.CCIngotAluminium.name=Aluminum Ingot
+item.CCIngotTin.name=Tin Ingot
+item.CCIngotLead.name=Lead Ingot
+item.CCIngotPlatinum.name=Platinum Ingot
+item.CCIngotBrass.name=Brass Ingot
+item.CCIngotZinc.name=Zinc Ingot
+item.CCIngotNickel.name=Nickel Ingot
+item.CCIngotTungsten.name=Tungsten Ingot
+item.CCIngotRhodium.name=Rhodium Ingot
+item.CCIngotIridium.name=Iridium Ingot
+item.CCIngotOsmium.name=Osmium Ingot
+item.CCIngotRuthenium.name=Ruthenium Ingot
+item.CCIngotPalladium.name=Palladium Ingot
+item.CCIngotTitanium.name=Titanium Ingot
+item.CCIngotSteel.name=Steel Ingot
 
 container.chemist_worktable=Chemist's Worktable

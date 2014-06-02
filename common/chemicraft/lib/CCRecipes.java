@@ -18,7 +18,7 @@ public class CCRecipes {
 			 */
 		
 		
-		GameRegistry.addRecipe(new ItemStack(CCBlocks.crucible), new Object[] {"O O", " O ", 'O', Items.clay_ball});
+		GameRegistry.addRecipe(new ItemStack(CCBlocks.blockCrucible), new Object[] {"O O", " O ", 'O', Items.clay_ball});
 		
 		
 		

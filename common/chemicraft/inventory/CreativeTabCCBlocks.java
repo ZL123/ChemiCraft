@@ -12,7 +12,7 @@ public class CreativeTabCCBlocks extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return Item.getItemFromBlock(CCBlocks.chemistWorktable);
+		return Item.getItemFromBlock(CCBlocks.blockChemistWorktable);
 	}
 
 }

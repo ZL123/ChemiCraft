@@ -52,7 +52,7 @@ public class ContainerChemistWorktable extends Container {
     
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != CCBlocks.chemistWorktable ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != CCBlocks.blockChemistWorktable ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
     }
 	
 	/**

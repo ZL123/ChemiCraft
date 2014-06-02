@@ -6,14 +6,16 @@ import java.util.List;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
 import chemicraft.energy.ICable;
 import chemicraft.energy.IEnergyConsumer;
 import chemicraft.energy.IEnergyProducer;
 
-public abstract class BaseTileEntityCable extends TileEntity implements ICable {
+public abstract class BaseTileEntityTubing extends TileEntity implements ICable {
 	
 	@SuppressWarnings("rawtypes")
 	public List knownProducers = new ArrayList<Integer>();
+	public ForgeDirection[] tubeConnections = new ForgeDirection[6];
 	
 	@Override
 	public void spreadPowerProducers() {
@@ -167,8 +169,8 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 	@Override
 	public boolean notifyAdjacentCable(int[] cableCoords, int[] producerCoords) {
 		if(worldObj.getTileEntity(cableCoords[0], cableCoords[1], cableCoords[2])
-				instanceof BaseTileEntityCable) {
-			BaseTileEntityCable adjCable = (BaseTileEntityCable) new TileEntity();
+				instanceof BaseTileEntityTubing) {
+			BaseTileEntityTubing adjCable = (BaseTileEntityTubing) new TileEntity();
 			adjCable.addToProducersList(cableCoords);
 			
 			return true;
@@ -179,8 +181,8 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 	@Override
 	public boolean producerExists(int[] cableCoords, int[] producerCoords) {
 		if(worldObj.getTileEntity(cableCoords[0], cableCoords[1], cableCoords[2])
-				instanceof BaseTileEntityCable) {
-			BaseTileEntityCable adjCable = (BaseTileEntityCable) new TileEntity();
+				instanceof BaseTileEntityTubing) {
+			BaseTileEntityTubing adjCable = (BaseTileEntityTubing) new TileEntity();
 			if (adjCable.findCoordsInProducerList(producerCoords) != -1) return true;
 		}
 		return false;
@@ -239,5 +241,30 @@ public abstract class BaseTileEntityCable extends TileEntity implements ICable {
 		return true;
 		
 	}
+	
+	@Override
+	public void updateEntity() {
+		findAndMarkPOIs();
+		updatePipes();
+	}
+	
+	/**
+	 * Finds adjacent pipes.
+	 */
+	public void updatePipes() {
+		if(worldObj.getTileEntity(xCoord, yCoord+1, zCoord) instanceof BaseTileEntityTubing) tubeConnections[0] = ForgeDirection.UP;
+		else tubeConnections[0] = null;
+		if(worldObj.getTileEntity(xCoord, yCoord-1, zCoord) instanceof BaseTileEntityTubing) tubeConnections[1] = ForgeDirection.DOWN;
+		else tubeConnections[1] = null;
+		if(worldObj.getTileEntity(xCoord, yCoord, zCoord-1) instanceof BaseTileEntityTubing) tubeConnections[2] = ForgeDirection.NORTH;
+		else tubeConnections[2] = null;
+		if(worldObj.getTileEntity(xCoord, yCoord, zCoord+1) instanceof BaseTileEntityTubing) tubeConnections[3] = ForgeDirection.SOUTH;
+		else tubeConnections[3] = null;
+		if(worldObj.getTileEntity(xCoord+1, yCoord, zCoord) instanceof BaseTileEntityTubing) tubeConnections[4] = ForgeDirection.EAST;
+		else tubeConnections[4] = null;
+		if(worldObj.getTileEntity(xCoord-1, yCoord, zCoord) instanceof BaseTileEntityTubing) tubeConnections[5] = ForgeDirection.WEST;
+		else tubeConnections[5] = null;
+	
+	}		
 	
 }

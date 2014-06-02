@@ -1,4 +1,4 @@
-package chemicraft.inventory.tileentity;
+package chemicraft.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
